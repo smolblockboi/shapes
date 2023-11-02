@@ -58,8 +58,8 @@
      id="layer1">
     <g
        id="g30"
-       transform="translate(9.7726423,0.43808397)"
-       inkscape:export-filename="armR.png"
+       transform="translate(0.60657773,0.3032889)"
+       inkscape:export-filename="oblong\armR.svg"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <g
@@ -107,13 +107,13 @@
     </g>
     <path
        style="fill:#391e03;fill-opacity:1;stroke:#000000;stroke-width:0.264582px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 15.786134,18.84218 c -1.672066,0.0038 -1.698072,1.978915 -1.698072,1.978915 l 3.618661,-0.0038 c 0.105855,-1.638025 -0.76401,-1.977768 -1.920589,-1.975115 z"
+       d="m 9.3496695,14.562437 c -1.6720661,0.0038 -1.698072,1.978915 -1.698072,1.978915 l 3.6186615,-0.0038 c 0.105855,-1.638025 -0.76401,-1.977768 -1.9205895,-1.975115 z"
        id="path11"
        sodipodi:nodetypes="sccs" />
     <g
        id="g31"
        transform="translate(1.0446618,0.3032889)"
-       inkscape:export-filename="body.png"
+       inkscape:export-filename="oblong\body.svg"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <path
@@ -206,9 +206,9 @@
        id="g20"
        inkscape:transform-center-x="0.036027886"
        inkscape:transform-center-y="2.2504347"
-       transform="matrix(1.0691099,0,0,1.068495,-10.300131,-1.1322642)"
+       transform="matrix(1.0691099,0,0,1.068495,0.21388423,-0.52568636)"
        style="stroke-width:0.935627"
-       inkscape:export-filename="armL.png"
+       inkscape:export-filename="oblong\armL.svg"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <path
@@ -225,10 +225,10 @@
     </g>
     <path
        style="fill:#391e03;fill-opacity:1;stroke:#000000;stroke-width:0.264582px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 8.8378303,18.673686 c -1.672065,0.0038 -1.6980707,1.978915 -1.6980707,1.978915 l 3.6186614,-0.0038 C 10.864275,19.010776 9.9944103,18.671033 8.8378303,18.673686 Z"
+       d="m 8.1301562,14.596135 c -1.672065,0.0038 -1.6980707,1.978915 -1.6980707,1.978915 l 3.6186615,-0.0038 C 10.156601,14.933225 9.2867362,14.593482 8.1301562,14.596135 Z"
        id="path28"
        sodipodi:nodetypes="sccs"
-       inkscape:export-filename="foot.png"
+       inkscape:export-filename="oblong\foot.svg"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
   </g>
