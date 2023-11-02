@@ -7,4 +7,6 @@ func _physics_process(delta):
 	
 	super.get_inputs(delta) # calls get_inputs from character.gd
 	
+	super.do_animations(delta) # calls do_animations from character.gd
+	
 	move_and_slide()
