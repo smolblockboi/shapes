@@ -15,7 +15,5 @@ spring_length = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="museum_base" parent="StaticBody3D" instance=ExtResource("2_bjfsu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.388717, 0, -0.965199)
+[node name="museum_base" parent="." instance=ExtResource("2_bjfsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0613914, 0.770401, -1.6149)
