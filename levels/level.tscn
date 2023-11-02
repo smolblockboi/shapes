@@ -1,0 +1,143 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnka0gsi4kpxv"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_uaqyk"]
+[ext_resource type="PackedScene" uid="uid://c5nc02g24jjjh" path="res://characters/player.tscn" id="2_7v6bo"]
+[ext_resource type="Script" path="res://levels/killzone.gd" id="3_wliei"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3a1u"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_h0i6p"]
+sky_material = SubResource("ProceduralSkyMaterial_f3a1u")
+
+[sub_resource type="Environment" id="Environment_p2g6y"]
+background_mode = 2
+sky = SubResource("Sky_h0i6p")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_nibj0"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_76hrv"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_uaqyk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p2g6y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_7v6bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32999, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+collision_mask = 0
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.285159, 0, 0, 0, 0.490077, 0.87406, 0.0685171, -1.74068)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.400623, 0, 0, 0, 1.35095, -0.851644, 0.255819, -1.49783)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.413632, 0, 0, 0, 2.31497, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, -3.94614, 0.21748, 1.92962)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D8"]
+transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, -1.94905, 0.21748, 1.92962)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D9"]
+transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 0.0209504, 0.21748, 1.92962)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D10"]
+transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 1.98072, 0.21748, 1.92962)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D11"]
+transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 3.90556, 0.21748, 1.92962)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D12"]
+transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(2.97928, 0, 0, 0, 0.31532, 0, 0, 0, 1.06571, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(10.2328, 0, 0, 0, 0.14598, 0, 0, 0, 4.12123, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(9.89528, 0, 0, 0, 2.30264, 0, 0, 0, 0.710544, 0, 0, -2.08118)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Blocks/CSGMesh3D4"]
+transform = Transform3D(0.925097, 0, 0, 0, 0.811292, 0, 0, 0, 0.596774, 0, 0, 0.287397)
+operation = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="KillZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503395, 0)
+script = ExtResource("3_wliei")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_76hrv")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

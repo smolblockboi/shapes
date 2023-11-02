@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5nc02g24jjjh"]
+
+[ext_resource type="PackedScene" uid="uid://bsnnqx75wnnpy" path="res://characters/character.tscn" id="1_748vb"]
+[ext_resource type="Script" path="res://characters/player.gd" id="2_wmcut"]
+
+[node name="Player" instance=ExtResource("1_748vb")]
+script = ExtResource("2_wmcut")
