@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnka0gsi4kpxv"]
+[gd_scene load_steps=10 format=3 uid="uid://bnka0gsi4kpxv"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_uaqyk"]
 [ext_resource type="PackedScene" uid="uid://c5nc02g24jjjh" path="res://characters/player.tscn" id="2_7v6bo"]
@@ -18,6 +18,9 @@ tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_nibj0"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_bci5s"]
+size = Vector3(0.79, 0.14, 0.05)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_76hrv"]
 
 [node name="Level" type="Node3D"]
@@ -34,103 +37,64 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32999, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.1, 0)
 collision_mask = 0
+spring_length = 3.5
 
-[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
+[node name="PlayerCamera" type="Camera3D" parent="Player/SpringArm3D"]
 current = true
-fov = 90.0
+fov = 45.0
 
 [node name="Blocks" type="Node3D" parent="."]
 
-[node name="CSGMesh3D5" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.285159, 0, 0, 0, 0.490077, 0.87406, 0.0685171, -1.74068)
+[node name="Ground" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(20.5386, 0, 0, 0, 0.146074, 0, 0, 0, 8.38745, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D6" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.400623, 0, 0, 0, 1.35095, -0.851644, 0.255819, -1.49783)
+[node name="Ground4" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.69619, 0, 0, 0, 1.48091, 0, 0, 0, 3.27004, 5.4081, 0.780196, -0.159003)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.413632, 0, 0, 0, 2.31497, 0, 0, 0)
+[node name="Ground7" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(-7.41429e-08, 0, 3.27004, 0, 1.48091, 0, -1.69619, 0, -1.42938e-07, -6.9725, 0.780196, -3.18265)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D8" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, -3.94614, 0.21748, 1.92962)
+[node name="Ground6" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(1.69619, 0, 0, 0, 1.48091, 0, 0, 0, 3.27004, -8.82458, 0.780196, 2.23777)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D8"]
-transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+[node name="PoliceStation" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(3.37734, 0, 0, 0, 1.6484, 0, 0, 0, 1.39469, 0.0240021, 0.86563, -3.05606)
+use_collision = true
+mesh = SubResource("BoxMesh_nibj0")
+
+[node name="Sign" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33251, 0.504399)
+use_collision = true
+mesh = SubResource("BoxMesh_bci5s")
+
+[node name="Label3D" type="Label3D" parent="Blocks/PoliceStation/Sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0389842)
+text = "Police Station"
+
+[node name="Interior" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(0.952242, 0, 0, 0, 0.935067, 0, 0, 0, 0.826295, 0, -0.0226974, 0)
 operation = 2
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, -1.94905, 0.21748, 1.92962)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D9"]
-transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
+[node name="Doorway" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(0.151362, 0, 0, 0, 0.431775, 0, 0, 0, 0.194149, -0.00688924, -0.267035, 0.4762)
 operation = 2
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="CSGMesh3D10" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 0.0209504, 0.21748, 1.92962)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D10"]
-transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
-operation = 2
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D11" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 1.98072, 0.21748, 1.92962)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D11"]
-transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
-operation = 2
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D12" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.85109, 0, 0, 0, 0.456218, 0, 0, 0, 0.165261, 3.90556, 0.21748, 1.92962)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D9" type="CSGMesh3D" parent="Blocks/CSGMesh3D12"]
-transform = Transform3D(0.903424, 0, 0, 0, 0.806543, 0, 0, 0, 1, 0, -0.106412, 0)
-operation = 2
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(2.97928, 0, 0, 0, 0.31532, 0, 0, 0, 1.06571, 0, 0, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(10.2328, 0, 0, 0, 0.14598, 0, 0, 0, 4.12123, 0, 0, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D4" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(9.89528, 0, 0, 0, 2.30264, 0, 0, 0, 0.710544, 0, 0, -2.08118)
-use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
-
-[node name="CSGMesh3D5" type="CSGMesh3D" parent="Blocks/CSGMesh3D4"]
-transform = Transform3D(0.925097, 0, 0, 0, 0.811292, 0, 0, 0, 0.596774, 0, 0, 0.287397)
-operation = 2
+[node name="Ground8" type="CSGMesh3D" parent="Blocks"]
+transform = Transform3D(2.58115, 0, 0, 0, 0.372631, 0, 0, 0, 1.39469, 0.0136614, 0.0272999, -0.0369232)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
