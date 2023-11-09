@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://csi2pgkye1h30"]
+[gd_scene load_steps=7 format=3 uid="uid://csi2pgkye1h30"]
 
 [ext_resource type="Texture2D" uid="uid://bmgnnj6v85mo6" path="res://sprites/civillians/civillians.svg" id="1_8kqbv"]
 
@@ -27,6 +27,10 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_pbsv7"]
 size = Vector3(4.6844, 4.75452, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8ldd7"]
+height = 2.5
+radius = 10.0
+
 [node name="npc_square" type="CharacterBody3D"]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -38,3 +42,8 @@ frame_progress = 0.592935
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.771383, 0)
 shape = SubResource("BoxShape3D_pbsv7")
+
+[node name="dialogue" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogue"]
+shape = SubResource("CylinderShape3D_8ldd7")
