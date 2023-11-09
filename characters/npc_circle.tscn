@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceopcw1t0vo66"]
+
+[ext_resource type="Texture2D" uid="uid://bmgnnj6v85mo6" path="res://sprites/civillians/civillians.svg" id="1_240f6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lm2tn"]
+radius = 2.14534
+height = 5.95596
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yok5g"]
+atlas = ExtResource("1_240f6")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hyv"]
+atlas = ExtResource("1_240f6")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfl5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yok5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="npc_circle" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105017, 0)
+shape = SubResource("CapsuleShape3D_lm2tn")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfl5d")
+autoplay = "default"
+frame = 1
+frame_progress = 0.33075

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8bphfm12033m"]
+
+[ext_resource type="Texture2D" uid="uid://bmgnnj6v85mo6" path="res://sprites/civillians/civillians.svg" id="1_1bm6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7nix"]
+atlas = ExtResource("1_1bm6m")
+region = Rect2(0, 1920, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myoho"]
+atlas = ExtResource("1_1bm6m")
+region = Rect2(640, 1920, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jk65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7nix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myoho")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qawg7"]
+size = Vector3(6, 4.33662, 1)
+
+[node name="npc_triangle" type="CharacterBody3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3jk65")
+autoplay = "default"
+frame_progress = 0.130214
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02464, 0)
+shape = SubResource("BoxShape3D_qawg7")

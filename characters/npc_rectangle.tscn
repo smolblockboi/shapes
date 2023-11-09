@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://tpqfd5f3xcic"]
+
+[ext_resource type="Texture2D" uid="uid://bmgnnj6v85mo6" path="res://sprites/civillians/civillians.svg" id="1_xopu1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wrni"]
+atlas = ExtResource("1_xopu1")
+region = Rect2(0, 1280, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyarc"]
+atlas = ExtResource("1_xopu1")
+region = Rect2(640, 1280, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnytg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wrni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyarc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7x3k"]
+size = Vector3(4.75988, 6.36332, 1)
+
+[node name="npc_rectangle" type="CharacterBody3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mnytg")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0499871
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b7x3k")
