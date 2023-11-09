@@ -361,7 +361,7 @@ alpha_cut = 1
 texture = ExtResource("3_lf55o")
 
 [node name="ArmR" type="Sprite3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959805, -0.677253, -0.02)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.609154, -0.677253, -0.02)
 offset = Vector2(112.185, 42.2)
 alpha_cut = 1
 texture = ExtResource("4_i5eo0")
@@ -373,13 +373,13 @@ alpha_cut = 1
 texture = ExtResource("5_fx4vn")
 
 [node name="FootR" type="Sprite3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036, -2.27855, -0.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036, -2.3, -0.01)
 offset = Vector2(0, -52.315)
 alpha_cut = 1
 texture = ExtResource("6_nqb7i")
 
 [node name="FootL" type="Sprite3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422, -2.27855, 0.01)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422, -2.3, 0.01)
 offset = Vector2(0, -52.315)
 alpha_cut = 1
 texture = ExtResource("6_nqb7i")

@@ -1,9 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnka0gsi4kpxv"]
+[gd_scene load_steps=19 format=3 uid="uid://bnka0gsi4kpxv"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_uaqyk"]
 [ext_resource type="PackedScene" uid="uid://bsnnqx75wnnpy" path="res://characters/player.tscn" id="2_3mj53"]
+[ext_resource type="PackedScene" path="res://characters/npc_circle.tscn" id="2_i3dt7"]
+[ext_resource type="PackedScene" path="res://characters/npc_rectangle.tscn" id="3_ie0qt"]
 [ext_resource type="Script" path="res://levels/buildings.gd" id="3_knyya"]
 [ext_resource type="Script" path="res://levels/killzone.gd" id="3_wliei"]
+[ext_resource type="PackedScene" path="res://characters/npc_square.tscn" id="4_lngbt"]
+[ext_resource type="PackedScene" path="res://characters/npc_triangle.tscn" id="5_2tm8s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3a1u"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,8 +51,20 @@ environment = SubResource("Environment_p2g6y")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
+[node name="npc_circle" parent="." instance=ExtResource("2_i3dt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8365, 3.78243, -10.8074)
+
+[node name="npc_rectangle" parent="." instance=ExtResource("3_ie0qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1154, 3.88109, 0)
+
+[node name="npc_square" parent="." instance=ExtResource("4_lngbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.74, 3.84807, 27.4523)
+
+[node name="npc_triangle" parent="." instance=ExtResource("5_2tm8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2178, 3.89238, -13.6082)
+
 [node name="Player" parent="." instance=ExtResource("2_3mj53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56659, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71398, 6.71689)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 0)
