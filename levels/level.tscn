@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnka0gsi4kpxv"]
+[gd_scene load_steps=15 format=3 uid="uid://bnka0gsi4kpxv"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_uaqyk"]
-[ext_resource type="PackedScene" uid="uid://c5nc02g24jjjh" path="res://characters/player.tscn" id="2_7v6bo"]
+[ext_resource type="PackedScene" uid="uid://bsnnqx75wnnpy" path="res://characters/player.tscn" id="2_3mj53"]
+[ext_resource type="Script" path="res://levels/buildings.gd" id="3_knyya"]
 [ext_resource type="Script" path="res://levels/killzone.gd" id="3_wliei"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3a1u"]
@@ -17,9 +18,22 @@ sky = SubResource("Sky_h0i6p")
 tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_nibj0"]
+size = Vector3(100, 1, 50)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bci5s"]
-size = Vector3(0.79, 0.14, 0.05)
+[sub_resource type="BoxMesh" id="BoxMesh_uw5i3"]
+size = Vector3(50, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjaj4"]
+size = Vector3(48.6184, 14.4075, 24.2564)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nqocm"]
+size = Vector3(1, 15, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uayof"]
+size = Vector3(50, 15, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pl2t0"]
+size = Vector3(6, 7, 2)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_76hrv"]
 
@@ -33,70 +47,122 @@ environment = SubResource("Environment_p2g6y")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_7v6bo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32999, 0)
+[node name="Player" parent="." instance=ExtResource("2_3mj53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56659, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 0)
 collision_mask = 0
-spring_length = 3.5
+spring_length = 25.0
 
 [node name="PlayerCamera" type="Camera3D" parent="Player/SpringArm3D"]
+cull_mask = 1
 current = true
 fov = 45.0
 
 [node name="Blocks" type="Node3D" parent="."]
 
 [node name="Ground" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(20.5386, 0, 0, 0, 0.146074, 0, 0, 0, 8.38745, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_nibj0")
 
-[node name="Ground4" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.69619, 0, 0, 0, 1.48091, 0, 0, 0, 3.27004, 5.4081, 0.780196, -0.159003)
+[node name="PoliceStation" type="CSGMesh3D" parent="Blocks" node_paths=PackedStringArray("hide_these")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199429, -13.8871)
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_uw5i3")
+script = ExtResource("3_knyya")
+hide_these = [NodePath("Front"), NodePath("Roof")]
 
-[node name="Ground7" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(-7.41429e-08, 0, 3.27004, 0, 1.48091, 0, -1.69619, 0, -1.42938e-07, -6.9725, 0.780196, -3.18265)
+[node name="InteriorArea" type="Area3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79704, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/PoliceStation/InteriorArea"]
+shape = SubResource("BoxShape3D_qjaj4")
+
+[node name="Left" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.552, 7.84046, 0.045701)
+layers = 2
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_nqocm")
 
-[node name="Ground6" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(1.69619, 0, 0, 0, 1.48091, 0, 0, 0, 3.27004, -8.82458, 0.780196, 2.23777)
+[node name="Right" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.551, 7.84046, 0.045701)
+layers = 2
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_nqocm")
 
-[node name="PoliceStation" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(3.37734, 0, 0, 0, 1.6484, 0, 0, 0, 1.39469, 0.0240021, 0.86563, -3.05606)
+[node name="Back" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84046, -11.9718)
+layers = 2
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_uayof")
 
-[node name="Sign" type="CSGMesh3D" parent="Blocks/PoliceStation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33251, 0.504399)
+[node name="Front" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84046, 12.0821)
+layers = 2
 use_collision = true
-mesh = SubResource("BoxMesh_bci5s")
+mesh = SubResource("BoxMesh_uayof")
 
-[node name="Label3D" type="Label3D" parent="Blocks/PoliceStation/Sign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0389842)
-text = "Police Station"
-
-[node name="Interior" type="CSGMesh3D" parent="Blocks/PoliceStation"]
-transform = Transform3D(0.952242, 0, 0, 0, 0.935067, 0, 0, 0, 0.826295, 0, -0.0226974, 0)
+[node name="Entrance" type="CSGMesh3D" parent="Blocks/PoliceStation/Front"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.08264, 0.426765)
+layers = 2
 operation = 2
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_pl2t0")
 
-[node name="Doorway" type="CSGMesh3D" parent="Blocks/PoliceStation"]
-transform = Transform3D(0.151362, 0, 0, 0, 0.431775, 0, 0, 0, 0.194149, -0.00688924, -0.267035, 0.4762)
+[node name="Roof" type="CSGMesh3D" parent="Blocks/PoliceStation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.7973, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_uw5i3")
+
+[node name="Building2" type="CSGMesh3D" parent="Blocks" node_paths=PackedStringArray("hide_these")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.8679, 0.199427, 6.67522)
+use_collision = true
+mesh = SubResource("BoxMesh_uw5i3")
+script = ExtResource("3_knyya")
+hide_these = [NodePath("Left"), NodePath("Roof")]
+
+[node name="InteriorArea" type="Area3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79704, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/Building2/InteriorArea"]
+shape = SubResource("BoxShape3D_qjaj4")
+
+[node name="Left" type="CSGMesh3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.552, 7.84046, 0.045701)
+layers = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nqocm")
+
+[node name="Right" type="CSGMesh3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.551, 7.84046, 0.045701)
+layers = 2
+use_collision = true
+mesh = SubResource("BoxMesh_nqocm")
+
+[node name="Back" type="CSGMesh3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84046, -11.9718)
+layers = 2
+use_collision = true
+mesh = SubResource("BoxMesh_uayof")
+
+[node name="Front" type="CSGMesh3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84046, 12.0821)
+layers = 2
+use_collision = true
+mesh = SubResource("BoxMesh_uayof")
+
+[node name="Entrance" type="CSGMesh3D" parent="Blocks/Building2/Front"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.08264, 0.426765)
+layers = 2
 operation = 2
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_pl2t0")
 
-[node name="Ground8" type="CSGMesh3D" parent="Blocks"]
-transform = Transform3D(2.58115, 0, 0, 0, 0.372631, 0, 0, 0, 1.39469, 0.0136614, 0.0272999, -0.0369232)
+[node name="Roof" type="CSGMesh3D" parent="Blocks/Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.7973, 0)
 use_collision = true
-mesh = SubResource("BoxMesh_nibj0")
+mesh = SubResource("BoxMesh_uw5i3")
 
 [node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503395, 0)
@@ -105,4 +171,8 @@ script = ExtResource("3_wliei")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_76hrv")
 
+[connection signal="body_entered" from="Blocks/PoliceStation/InteriorArea" to="Blocks/PoliceStation" method="_on_interior_area_body_entered"]
+[connection signal="body_exited" from="Blocks/PoliceStation/InteriorArea" to="Blocks/PoliceStation" method="_on_interior_area_body_exited"]
+[connection signal="body_entered" from="Blocks/Building2/InteriorArea" to="Blocks/Building2" method="_on_interior_area_body_entered"]
+[connection signal="body_exited" from="Blocks/Building2/InteriorArea" to="Blocks/Building2" method="_on_interior_area_body_exited"]
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
