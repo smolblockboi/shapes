@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://csi2pgkye1h30"]
+
+[ext_resource type="Texture2D" uid="uid://bmgnnj6v85mo6" path="res://sprites/civillians/civillians.svg" id="1_8kqbv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idvtq"]
+atlas = ExtResource("1_8kqbv")
+region = Rect2(0, 640, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmfuh"]
+atlas = ExtResource("1_8kqbv")
+region = Rect2(640, 640, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_une6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idvtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmfuh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbsv7"]
+size = Vector3(4.6844, 4.75452, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8ldd7"]
+height = 2.5
+radius = 10.0
+
+[node name="npc_square" type="CharacterBody3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_une6x")
+autoplay = "default"
+frame = 1
+frame_progress = 0.592935
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.771383, 0)
+shape = SubResource("BoxShape3D_pbsv7")
+
+[node name="dialogue" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dialogue"]
+shape = SubResource("CylinderShape3D_8ldd7")
